@@ -1,0 +1,3 @@
+#Para configurar la zona horaria de un contenedor
+ENV TZ=America/El_Salvador
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
