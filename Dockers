@@ -1,3 +1,9 @@
 #Para configurar la zona horaria de un contenedor
 ENV TZ=America/El_Salvador
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+
+#Para hacer uso de la libreria openssl que utiliza el servicio de textToSpeech de azure
+FROM registry.access.redhat.com/ubi8/openjdk-17:1.18
+USER root
+RUN microdnf install -y openssl-devel && microdnf clean all
