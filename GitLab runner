@@ -1,0 +1,7 @@
+#Descargar imagen y crear contenedor
+docker run -d --name runner-desarrolladores --restart always -v /srv/gitlab-runner/config:/etc/gitlab-runner -v /var/run/docker.sock:/var/run/docker.sock gitlab/gitlab-runner:latest
+
+#Registro del gitlab-runner
+docker exec -it runner-desarrolladores gitlab-runner register
+
+#En la configuracion del grupo en gitlab, dirigirse a CI/CD y usar la url y token que aparecen en Group runner, para registrar el runner
