@@ -3,8 +3,13 @@ Configurar para GitLab, genera un token personal desde el perfil, este token ser
 
 #Descargar imagen y crear contenedor
 docker run -d --name runner-desarrolladores --restart always -v /srv/gitlab-runner/config:/etc/gitlab-runner -v /var/run/docker.sock:/var/run/docker.sock gitlab/gitlab-runner:latest
+#temp
+docker run -d --name runner-listavalores --restart always -v /srv/gitlab-runner/config:/etc/gitlab-runner -v /var/run/docker.sock:/var/run/docker.sock gitlab/gitlab-runner:alpine-v15.11.0
+
 
 #Registro del gitlab-runner
 docker exec -it runner-desarrolladores gitlab-runner register
 
 #En la configuracion del grupo en gitlab, dirigirse a CI/CD y usar la url y token que aparecen en Group runner, para registrar el runner
+
+
