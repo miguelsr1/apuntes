@@ -1,3 +1,6 @@
+#SonarQube
+Configurar para GitLab, genera un token personal desde el perfil, este token servira para configurar la conexión entre SonarQube y GitLab
+
 #Descargar imagen y crear contenedor
 docker run -d --name runner-desarrolladores --restart always -v /srv/gitlab-runner/config:/etc/gitlab-runner -v /var/run/docker.sock:/var/run/docker.sock gitlab/gitlab-runner:latest
 
