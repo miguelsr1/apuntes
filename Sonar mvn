@@ -1,0 +1,67 @@
+#primero configurar mvn de manera global con los siguientes configuraciones:
+/usr/share/maven/conf/settings.xml
+
+  #Agregar un grupo
+  <pluginGroups>
+    <pluginGroup>org.sonarsource.scanner.maven</pluginGroup>
+  </pluginGroups>
+
+
+  #Adicionar un profile
+    <profile>
+        <id>sonar</id>
+        <activation>
+            <activeByDefault>true</activeByDefault>
+        </activation>
+        <properties>
+            <sonar.host.url>http://192.168.10.105:9000</sonar.host.url>
+            <sonar.login>squ_e9e94caeec845fd148764d810b2180de8869ac1f</sonar.login>
+        </properties>
+    </profile>
+
+#Luego en los proyectos maven, realizar las siguientes adecuaciones al arhivo pom.xml
+  #Agregar dependencia para los proyectos quarkus
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-jacoco</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+  #Agregar dependencia para los proyectos JavaEE / JakartaEE
+        <dependency>
+            <groupId>org.jacoco</groupId>
+            <artifactId>org.jacoco.agent</artifactId>
+            <version>0.8.12</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jacoco</groupId>
+            <artifactId>org.jacoco.core</artifactId>
+            <version>0.8.12</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jacoco</groupId>
+            <artifactId>org.jacoco.report</artifactId>
+            <version>0.8.12</version>
+        </dependency>
+
+  #En la seccion de build, agregar el siguiente plugin
+          <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.12</version>
+                <executions>
+                    <execution>
+                        <id>default-prepare-agent</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>default-report</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
