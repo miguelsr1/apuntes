@@ -6,7 +6,6 @@
     <pluginGroup>org.sonarsource.scanner.maven</pluginGroup>
   </pluginGroups>
 
-
   #Adicionar un profile
     <profile>
         <id>sonar</id>
@@ -19,7 +18,14 @@
         </properties>
     </profile>
 
-#Luego en los proyectos maven, realizar las siguientes adecuaciones al arhivo pom.xml
+=====================================================================================
+
+#Luego en los proyectos maven, realizar las siguientes adecuaciones al archivo pom.xml
+
+  #dentro de las propiedades, agregar los siguientes tags
+        <sonar.projectKey>GENERADO_DESDE_SONAR_QUBE</sonar.projectKey>
+        <sonar.host.url>http://192.168.10.105:9000</sonar.host.url>
+
   #Agregar dependencia para los proyectos quarkus
         <dependency>
             <groupId>io.quarkus</groupId>
